@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.3.8/datatables.min.css" rel="stylesheet" integrity="sha384-nD9P196GmYuiIASpxI7+7/0LqD6BBA74CfgIOSQUo7brmKKeph8lSEMm2sGgSAvK" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contoh Datatables Golang</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <a href="#" class="btn btn-success ms-auto">
+                            <i class="bi bi-file-earmark-spreadsheet me-2"></i>
+                            Export Excel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="dt-examples" class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <th>No</th>
+                        <th>Kode Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Satuan</th>
+                        <th>Harga Satuan</th>
+                        <th>Jumlah</th>
+                        <th>Keterangan</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.3.8/datatables.min.js" integrity="sha384-pszF7QvU8ChuuhQBJGIvzVEcojfpYqQOVG2PaXES4M4Mcn+1CqfQ4r1b/mpdtn/6" crossorigin="anonymous"></script>
+
+<script>
+    var table;
+    $(document).ready(function() {
+        table = $("#dt-examples").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: "api/barang",
+            },
+            columns: [
+                { data: "id", orderable: false },
+                { data: "kode_barang", orderable: true },
+                { data: "nama_barang", orderable: true },
+                { data: "satuan", orderable: true },
+                { data: "harga_satuan", orderable: true },
+                { data: "jumlah", orderable: true },
+                { data: "keterangan", orderable: true },
+            ]
+        })
+    })
+</script>
+</html>
